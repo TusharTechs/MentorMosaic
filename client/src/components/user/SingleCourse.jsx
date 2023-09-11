@@ -25,7 +25,7 @@ function SingleCourse() {
 
   useEffect(() => {
     axios
-      .get("https://mentor-mosaic-server.vercel.app/users/courses")
+      .get("https://mentor-mosaic.onrender.com/users/courses")
       .then((res) => {
         const purchasedCourse = res.data.courses.find(
           (course) => course._id === id
@@ -45,7 +45,7 @@ function SingleCourse() {
     if (token) {
       if (jwt_decode(token).role === "user") {
         axios
-          .post(`https://mentor-mosaic-server.vercel.app/users/courses/${id}`, null, {
+          .post(`https://mentor-mosaic.onrender.com/users/courses/${id}`, null, {
             headers: {
               authorization: token,
             },
