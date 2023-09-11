@@ -16,7 +16,7 @@ function Signup() {
     e.preventDefault();
     if (email && username && password) {
       axios
-        .post('http://localhost:3000/users/signup', {
+        .post('https://mentor-mosaic-server.vercel.app/users/signup', {
           email,
           username,
           password,
