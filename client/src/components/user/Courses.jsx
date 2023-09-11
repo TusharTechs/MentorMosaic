@@ -6,7 +6,7 @@ function Courses() {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/users/courses")
+      .get("https://mentor-mosaic-server.vercel.app/users/courses")
       .then((res) => setCourses(res.data.courses))
       .catch((err) => console.error(err));
   }, []);
