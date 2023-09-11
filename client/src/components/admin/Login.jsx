@@ -14,7 +14,7 @@ function Login() {
     e.preventDefault();
     if (username && password) {
       axios
-        .post('https://mentor-mosaic-server.vercel.app/admin/login', null, {
+        .post('https://mentor-mosaic.onrender.com/admin/login', null, {
           headers: {
             username: username,
             password: password,
