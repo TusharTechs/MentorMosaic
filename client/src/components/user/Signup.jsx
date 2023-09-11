@@ -16,7 +16,7 @@ function Signup() {
     e.preventDefault();
     if (email && username && password) {
       axios
-        .post('https://mentor-mosaic-server.vercel.app/users/signup', {
+        .post('https://mentor-mosaic.onrender.com/users/signup', {
           email,
           username,
           password,
