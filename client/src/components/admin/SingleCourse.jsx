@@ -10,7 +10,7 @@ function SingleCourse() {
 
   useEffect(() => {
     axios
-      .get('https://mentor-mosaic-server.vercel.app/admin/courses', {
+      .get('https://mentor-mosaic.onrender.com/admin/courses', {
         headers: {
           authorization: token,
         },
