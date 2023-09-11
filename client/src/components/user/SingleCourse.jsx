@@ -125,16 +125,14 @@ function SingleCourse() {
       </center>
       {isPurchased && course.videoUrl && (
         <div className="text-center">
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <iframe
+          <iframe
               title="Course Video"
               src={course.videoUrl}
               width="640"
               height="360"
               frameBorder="0"
               allowFullScreen
-            ></iframe>
-          </div>
+          ></iframe>
         </div>
       )}
     </section>
