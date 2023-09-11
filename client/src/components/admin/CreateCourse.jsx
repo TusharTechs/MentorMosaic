@@ -19,7 +19,7 @@ function Courses() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = { title, tag, price, imgLink, description, videoUrl, published };
-    const response = await axios.post('http://localhost:3000/admin/courses', data, {
+    const response = await axios.post('https://mentor-mosaic-server.vercel.app/admin/courses', data, {
       headers: {
         authorization: token,
       },
