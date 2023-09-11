@@ -14,7 +14,7 @@ function Dashboard() {
     if (token) {
       if (jwt_decode(token).role === "admin") {
         axios
-          .get('https://mentor-mosaic-server.vercel.app/admin/courses', {
+          .get('https://mentor-mosaic.onrender.com/admin/courses', {
             headers: {
               authorization: token,
             },
