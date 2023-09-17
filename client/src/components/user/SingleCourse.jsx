@@ -28,7 +28,7 @@ function SingleCourse() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/users/courses")
+      .get("https://mentor-mosaic.onrender.com/users/courses")
       .then((res) => {
         const purchasedCourse = res.data.courses.find(
           (course) => course._id === id
