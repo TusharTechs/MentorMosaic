@@ -20,7 +20,7 @@ const PaymentModal = ({
   const token = localStorage.getItem("token");
 
   const launchRazorPay = () => {
-    if (open) {
+    if (isOpen) {
       let options = {
         key: "rzp_test_3mwAsetJPN4JkR",
         amount: course.price * 100,
