@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { userAtom } from "../../store/atom";
 import jwt_decode from "jwt-decode";
+import PaymentModal from "./PaymentModal";
 
 function SingleCourse() {
   const [course, setCourse] = useState({});
@@ -13,6 +14,8 @@ function SingleCourse() {
   const user = useRecoilValue(userAtom);
   const [isPurchased, setIsPurchased] = useState(false);
   const setUser = useSetRecoilState(userAtom);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
 
   useEffect(() => {
     if (user && user.purchasedCourses.includes(id)) {
@@ -44,20 +47,8 @@ function SingleCourse() {
   const handleClick = () => {
     if (token) {
       if (jwt_decode(token).role === "user") {
-        axios
-          .post(`http://localhost:3000/users/courses/${id}`, null, {
-            headers: {
-              authorization: token,
-            },
-          })
-          .then((res) => {
-            let updatedCourses = [...user.purchasedCourses];
-            updatedCourses.push(id);
-            setUser({ ...user, purchasedCourses: updatedCourses });
-          })
-          .catch((err) => console.error(err));
-      } else {
-        setMessage("You are not authenticated to buy any course");
+        // Open the payment modal when the "Buy Course" button is clicked
+        setIsPaymentModalOpen(true);
       }
     } else {
       setMessage("You are not authenticated to buy any course");
@@ -123,6 +114,7 @@ function SingleCourse() {
           <p className=" text-royal-green-900 text-xl">{course.description}</p>
         </div>
       </center>
+
       {isPurchased && course.videoUrl && (
         <div className="text-center">
           <div style={{ display: "flex", justifyContent: "center" }}>
@@ -131,12 +123,29 @@ function SingleCourse() {
               src={course.videoUrl}
               width="640"
               height="360"
-              frameBorder="0"
               allowFullScreen
             ></iframe>
           </div>
         </div>
       )}
+      {!token && message && (
+        <div className="mt-4 text-xl font-bold text-red-900 text-center">
+          {message}
+          <br />
+          <Link to={`/login`}>Please login to buy the course.</Link>
+        </div>
+      )}
+
+      <PaymentModal
+        course={course}
+        price={course.price}
+        isOpen={isPaymentModalOpen}
+        setIsOpen={setIsPaymentModalOpen}
+        setIsPaymentSuccessful={setIsPaymentSuccessful}
+        setMessage={setMessage} // Pass a function to set the payment message
+        user={user}
+        setUser={setUser}
+      />
     </section>
   );
 }
