@@ -15,7 +15,7 @@ function Navbar() {
 
   const init = async () => {
     const response = await axios.get(
-      "http://localhost:3000/users/me",
+      "https://mentor-mosaic.onrender.com/users/me",
       {
         headers: {
           authorization: token,

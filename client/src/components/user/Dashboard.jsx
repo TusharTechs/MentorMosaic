@@ -14,7 +14,7 @@ function Dashboard() {
     if (token) {
       if (jwt_decode(token).role === "user") {
         axios
-          .get('http://localhost:3000/users/purchasedCourses', {
+          .get('https://mentor-mosaic.onrender.com/users/purchasedCourses', {
             headers: {
               authorization: token,
             },

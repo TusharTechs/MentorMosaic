@@ -34,7 +34,7 @@ const PaymentModal = ({
           setIsPaymentSuccessful(true); // Set payment success state to true
           setMessage("");
           axios
-            .post(`http://localhost:3000/users/courses/${course._id}`, null, {
+            .post(`https://mentor-mosaic.onrender.com/users/courses/${course._id}`, null, {
               headers: {
                 authorization: token,
               },

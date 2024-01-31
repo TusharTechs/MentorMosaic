@@ -15,7 +15,7 @@ function Navbar() {
     if (token) {
       if (jwt_decode(token).role === "admin") {
         axios
-          .get(`http://localhost:3000/admin/me`, {
+          .get(`https://mentor-mosaic.onrender.com/admin/me`, {
             headers: {
               authorization: token,
             },

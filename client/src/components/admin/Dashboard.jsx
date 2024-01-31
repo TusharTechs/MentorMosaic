@@ -14,7 +14,7 @@ function Dashboard() {
     if (token) {
       if (jwt_decode(token).role === "admin") {
         axios
-          .get('http://localhost:3000/admin/courses', {
+          .get('https://mentor-mosaic.onrender.com/admin/courses', {
             headers: {
               authorization: token,
             },
